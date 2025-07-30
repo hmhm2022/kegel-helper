@@ -77,8 +77,8 @@ tg-helper/
 
 ### 1. 克隆项目
 ```bash
-git clone <repository-url>
-cd tg-helper
+git clone https://github.com/hmhm2022/kegel-helper.git
+cd kegel-helper
 ```
 
 ### 2. 后端开发
@@ -221,9 +221,9 @@ npm run tauri:build
 
 ## 📞 联系我们
 
-- 项目地址: [GitHub Repository](https://github.com/kegel-helper/kegel-helper)
-- 问题反馈: [Issues](https://github.com/kegel-helper/kegel-helper/issues)
-- 功能建议: [Discussions](https://github.com/kegel-helper/kegel-helper/discussions)
+- 项目地址: [GitHub Repository](https://github.com/hmhm2022/kegel-helper)
+- 问题反馈: [Issues](https://github.com/hmhm2022/kegel-helper/issues)
+- 功能建议: [Discussions](https://github.com/hmhm2022/kegel-helper/discussions)
 
 ---
 
