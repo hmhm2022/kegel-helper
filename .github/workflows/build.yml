@@ -43,7 +43,7 @@ jobs:
       - name: Install frontend dependencies
         run: |
           cd frontend
-          npm ci
+          npm install
 
       - name: Build frontend
         run: |
@@ -55,27 +55,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          projectPath: ./src-tauri
           tagName: ${{ github.ref_name }}
           releaseName: '提肛小助手 v__VERSION__'
           releaseBody: |
             ## 🎉 提肛小助手 v${{ github.ref_name }}
-            
+
             ### 📦 下载说明
             - **Windows**: 下载 `.msi` 文件
-            - **macOS**: 下载 `.dmg` 文件  
+            - **macOS**: 下载 `.dmg` 文件
             - **Linux**: 下载 `.deb` 或 `.AppImage` 文件
-            
+
             ### ✨ 主要功能
             - 智能提醒系统
             - 可视化运动指导
             - 数据统计追踪
             - 个性化设置
-            
+
             ### 🔧 安装方式
             1. 下载对应平台的安装包
             2. 运行安装程序
             3. 启动应用开始使用
-            
+
             完整更新日志请查看 [CHANGELOG.md](https://github.com/hmhm2022/kegel-helper/blob/main/CHANGELOG.md)
           releaseDraft: false
           prerelease: false
@@ -96,7 +97,7 @@ jobs:
       - name: Install frontend dependencies
         run: |
           cd frontend
-          npm ci
+          npm install
 
       - name: Run frontend tests
         run: |
