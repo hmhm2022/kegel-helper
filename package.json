@@ -8,11 +8,7 @@
     "build": "cd frontend && npm run build",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build",
-    "backend:dev": "cd backend && python start.py",
-    "backend:install": "cd backend && pip install -r requirements.txt",
     "frontend:install": "cd frontend && npm install",
-    "install:all": "npm run frontend:install && npm run backend:install",
-    "start": "concurrently \"npm run backend:dev\" \"npm run dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -37,8 +33,5 @@
     "url": "https://github.com/kegel-helper/kegel-helper/issues"
   },
   "homepage": "https://github.com/kegel-helper/kegel-helper#readme",
-  "dependencies": {
-    "express": "^5.1.0",
-    "open": "^10.2.0"
-  }
+  "dependencies": {}
 }

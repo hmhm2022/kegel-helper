@@ -56,6 +56,10 @@ export const toggleReminder = (): Promise<ApiResponse<boolean>> => {
   return callApi<boolean>('toggle_reminder')
 }
 
+export const checkAndSendReminder = (): Promise<ApiResponse<boolean>> => {
+  return callApi<boolean>('check_and_send_reminder')
+}
+
 // 健康检查（在Tauri环境中不需要）
 export const healthCheck = (): Promise<ApiResponse<void>> => {
   if (isTauri()) {

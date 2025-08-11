@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { ExerciseStats, ExerciseRecord, ReminderStatus } from '@/types'
-import { getStats, startExercise, completeExercise, getReminderStatus, toggleReminder } from '@/utils/api'
+import { getStats, startExercise, completeExercise, getReminderStatus, toggleReminder, checkAndSendReminder } from '@/utils/api'
 
 export const useExerciseStore = defineStore('exercise', () => {
   // 状态
@@ -161,6 +161,8 @@ export const useExerciseStore = defineStore('exercise', () => {
       const response = await toggleReminder()
       if (response.success && response.data !== undefined) {
         reminderStatus.value.enabled = response.data
+        // 切换后立即更新提醒状态
+        await loadReminderStatus()
       }
       return response
     } catch (err) {
@@ -169,6 +171,40 @@ export const useExerciseStore = defineStore('exercise', () => {
       throw err
     } finally {
       loading.value = false
+    }
+  }
+
+  const checkReminder = async () => {
+    try {
+      await checkAndSendReminder()
+      // 检查后更新提醒状态
+      await loadReminderStatus()
+    } catch (err) {
+      console.error('检查提醒失败:', err)
+    }
+  }
+
+  // 启动定期检查提醒的定时器
+  let reminderCheckInterval: number | null = null
+
+  const startReminderCheck = () => {
+    if (reminderCheckInterval) {
+      clearInterval(reminderCheckInterval)
+    }
+
+    // 每30秒检查一次提醒状态和是否需要发送提醒
+    reminderCheckInterval = setInterval(async () => {
+      await loadReminderStatus()
+      if (reminderStatus.value.enabled) {
+        await checkReminder()
+      }
+    }, 30000)
+  }
+
+  const stopReminderCheck = () => {
+    if (reminderCheckInterval) {
+      clearInterval(reminderCheckInterval)
+      reminderCheckInterval = null
     }
   }
 
@@ -181,15 +217,18 @@ export const useExerciseStore = defineStore('exercise', () => {
     currentRepetition,
     loading,
     error,
-    
+
     // 计算属性
     canStartExercise,
     exerciseProgress,
-    
+
     // 动作
     loadStats,
     loadReminderStatus,
     toggleReminderStatus,
+    checkReminder,
+    startReminderCheck,
+    stopReminderCheck,
     beginExercise,
     finishExercise,
     incrementRepetition,

@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "提肛小助手",
+    "productName": "kegel-helper",
     "version": "1.0.0"
   },
   "tauri": {
@@ -31,6 +31,9 @@
       },
       "path": {
         "all": true
+      },
+      "notification": {
+        "all": true
       }
     },
     "bundle": {
@@ -40,6 +43,11 @@
         "icons/icon.ico"
       ]
     },
+    "systemTray": {
+      "iconPath": "icons/icon.ico",
+      "iconAsTemplate": true,
+      "menuOnLeftClick": false
+    },
     "security": {
       "csp": null
     },
@@ -47,7 +55,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "提肛小助手",
+        "title": "kegel-helper",
         "width": 1000,
         "height": 700,
         "minWidth": 800,

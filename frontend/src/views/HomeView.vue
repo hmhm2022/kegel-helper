@@ -6,7 +6,7 @@
         <div class="header-content">
           <h1 class="title">
             <el-icon><Aim /></el-icon>
-            提肛小助手
+            kegel-helper
           </h1>
           <div class="nav-buttons">
             <el-button type="primary" @click="$router.push('/exercise')">
@@ -112,7 +112,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSettingsStore } from '@/stores/settings'
 import { useExerciseStore } from '@/stores/exercise'
@@ -177,6 +177,14 @@ onMounted(async () => {
 
   // 设置提醒状态
   reminderEnabled.value = exerciseStore.reminderStatus.enabled
+
+  // 启动定期检查提醒
+  exerciseStore.startReminderCheck()
+})
+
+onUnmounted(() => {
+  // 停止定期检查
+  exerciseStore.stopReminderCheck()
 })
 </script>
 

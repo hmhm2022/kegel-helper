@@ -1,9 +1,6 @@
 # Dependencies
 node_modules/
 frontend/node_modules/
-backend/__pycache__/
-backend/.venv/
-backend/venv/
 
 # Build outputs
 frontend/dist/
@@ -27,7 +24,6 @@ src-tauri/target/
 *.sqlite
 *.sqlite3
 kegel_helper.db
-backend/kegel_helper.db
 
 # Logs
 npm-debug.log*
@@ -281,7 +277,14 @@ $RECYCLE.BIN/
 *~
 
 # Project specific
-aug_issues/
-test-api.html
-create_icon.py
-app-icon.png
+# Keep aug_issues and create_icon.py for now
+# test-api.html - removed
+# app-icon.png - keep as it's the app icon
+
+# Tauri build artifacts
+src-tauri/.cargo/
+
+# Auto-generated frontend files
+frontend/auto-imports.d.ts
+frontend/components.d.ts
+frontend/tsconfig.tsbuildinfo

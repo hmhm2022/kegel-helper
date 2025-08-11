@@ -31,9 +31,9 @@
             <el-form-item label="提醒间隔">
               <el-slider
                 v-model="localSettings.reminderInterval"
-                :min="5"
+                :min="1"
                 :max="120"
-                :step="5"
+                :step="1"
                 show-input
                 :format-tooltip="formatMinutes"
               />
