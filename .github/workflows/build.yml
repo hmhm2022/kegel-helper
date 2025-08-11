@@ -59,7 +59,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          projectPath: ./src-tauri
           tagName: ${{ github.ref_name }}
           releaseName: '提肛小助手 v__VERSION__'
           releaseBody: |
