@@ -277,8 +277,8 @@ $RECYCLE.BIN/
 *~
 
 # Project specific
-# Keep aug_issues and create_icon.py for now
-# test-api.html - removed
+aug_issues/
+# Keep create_icon.py for now
 # app-icon.png - keep as it's the app icon
 
 # Tauri build artifacts
