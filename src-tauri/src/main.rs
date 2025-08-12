@@ -235,7 +235,7 @@ fn get_stats(state: State<AppState>) -> Result<ApiResponse<ExerciseStats>, Strin
 }
 
 #[tauri::command]
-fn start_exercise(state: State<AppState>) -> Result<ApiResponse<String>, String> {
+fn start_exercise(_state: State<AppState>) -> Result<ApiResponse<String>, String> {
     let now = Local::now().to_rfc3339();
 
     Ok(ApiResponse {
