@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
-    "tauri": "npx @tauri-apps/cli",
+    "tauri": "npx @tauri-apps/cli@^1.5.0",
     "tauri:dev": "npx tauri dev",
     "tauri:build": "npx tauri build",
     "frontend:install": "cd frontend && npm install",
